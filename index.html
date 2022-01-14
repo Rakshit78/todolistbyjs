@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Static Template</title>
+  </head>
+  <body>
+    <h1>TodoList</h1>
+    <form id="foms">
+      <input
+        type="text"
+        name="todoitem"
+        placeholder="addtodo"
+        id="inputvalue"
+      />
+    </form>
+    <ul id="parrent">
+      <li id="child"></li>
+    </ul>
+
+    <script>
+      const form = document.getElementById("foms");
+      const inputvalue = document.getElementById("inputvalue");
+      const ul = document.getElementById("parrent");
+      const child = document.getElementById("child");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const todoelement = document.createElement("li");
+        todoelement.innerText = inputvalue.value;
+        if (todoelement) {
+          todoelement.addEventListener("click", () => {
+            todoelement.remove();
+          });
+
+          ul.appendChild(todoelement);
+          inputvalue = "";
+        }
+      });
+    </script>
+  </body>
+</html>
